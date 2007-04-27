@@ -1,36 +1,37 @@
-%define Name docbook-style-dsssl
-%define Version 1.79
+%define name docbook-style-dsssl
+%define version 1.79
+%define release %mkrel 4
 
-Name:		%{Name}
-Version:	%{Version}
-Release:	3mdk
-Group       	: Publishing
+name:		%{name}
+version:	%{version}
+release:	%{release}
+Group:		Publishing
 
-Summary     	: Norman Walsh\'s modular stylesheets for DocBook
+Summary:	Norman Walsh's modular stylesheets for DocBook
 
-License   	: Artistic style
-URL         	: http://sourceforge.net/projects/docbook/
+License:	Artistic style
+URL:		http://sourceforge.net/projects/docbook/
 
-Prereq		: sgml-common >= 0.2
-Prereq		: jade >= 1.2.1
+Requires:	sgml-common >= 0.2
+Requires:	jade >= 1.2.1
 
-BuildRoot   	: %{_tmppath}/%{name}-buildroot 
+BuildRoot:	%{_tmppath}/%{name}-buildroot 
 
-BuildArch	: noarch
-Source0		: http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{Version}.tar.bz2
-Patch0:               docbook-dsssl-1.78-DTDDECL.patch
+BuildArch:	noarch
+Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.bz2
+Patch0:		docbook-dsssl-1.78-DTDDECL.patch
 
 %define sgmlbase %{_datadir}/sgml
 
 %description
-These DSSSL stylesheets allow to convert any DocBook document to another
+These DSSSL stylesheets allow you to convert any DocBook document to another
 printed (for example, RTF or PostScript) or online (for example, HTML) format.
 They are highly customizable.
 
 
 %prep
-%setup -n docbook-dsssl-%{Version} -q
-%setup -T -D -n docbook-dsssl-%{Version}
+%setup -n docbook-dsssl-%{version} -q
+%setup -T -D -n docbook-dsssl-%{version}
 %patch -p1
 
 %build
@@ -38,15 +39,15 @@ They are highly customizable.
 %install
 DESTDIR=$RPM_BUILD_ROOT
 mkdir -p $DESTDIR%{_bindir}
-mkdir -p $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{Version}/
+mkdir -p $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
 
-cd $RPM_BUILD_DIR/docbook-dsssl-%{Version}
+cd $RPM_BUILD_DIR/docbook-dsssl-%{version}
 
 install bin/collateindex.pl $DESTDIR%{_bindir}
-cp -r contrib catalog dtds VERSION olink common html frames lib print images $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{Version}/
+cp -r contrib catalog dtds VERSION olink common html frames lib print images $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
 
 rm -f $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets
-ln -sf dsssl-stylesheets-%{Version} $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets
+ln -sf dsssl-stylesheets-%{version} $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets
 
 cd ..
 
@@ -61,13 +62,13 @@ rm -rf $DESTDIR
 %doc BUGS README RELEASE-NOTES.* VERSION
 %doc ChangeLog WhatsNew
 %attr(-,root,root) %{_bindir}/collateindex.pl
-%dir %{sgmlbase}/docbook/dsssl-stylesheets-%{Version}
-%{sgmlbase}/docbook/dsssl-stylesheets-%{Version}/*
+%dir %{sgmlbase}/docbook/dsssl-stylesheets-%{version}
+%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/*
 %{sgmlbase}/docbook/dsssl-stylesheets
 
 %post
 # remove possible old references to 
-# %{sgmlbase}/docbook/dsssl-stylesheets-%{Version}/catalog
+# %{sgmlbase}/docbook/dsssl-stylesheets-%{version}/catalog
 rm -f %{_sysconfdir}/sgml/sgml-docbook-\*.cat
 
 # fix old broken stuff
