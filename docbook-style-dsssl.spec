@@ -15,7 +15,6 @@ URL:		http://sourceforge.net/projects/docbook/
 Requires:	sgml-common >= 0.2
 Requires:	jade >= 1.2.1
 
-BuildRoot:	%{_tmppath}/%{name}-buildroot 
 
 BuildArch:	noarch
 Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.bz2
