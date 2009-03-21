@@ -32,7 +32,7 @@ They are highly customizable.
 %prep
 %setup -n docbook-dsssl-%{version} -q
 %setup -T -D -n docbook-dsssl-%{version}
-%patch -p1
+%patch0 -p1
 
 %build
 
