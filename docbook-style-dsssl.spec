@@ -1,6 +1,6 @@
 %define name docbook-style-dsssl
 %define version 1.79
-%define release %mkrel 8
+%define release %mkrel 9
 
 name:		%{name}
 version:	%{version}
