@@ -37,7 +37,7 @@ They are highly customizable.
 %build
 
 %install
-DESTDIR=$RPM_BUILD_ROOT
+DESTDIR=%{buildroot}
 mkdir -p $DESTDIR%{_bindir}
 mkdir -p $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
 
@@ -53,7 +53,7 @@ cd ..
 
 
 %clean
-DESTDIR=$RPM_BUILD_ROOT
+DESTDIR=%{buildroot}
 rm -rf $DESTDIR
 
 
