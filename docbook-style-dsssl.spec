@@ -41,7 +41,7 @@ DESTDIR=%{buildroot}
 mkdir -p $DESTDIR%{_bindir}
 mkdir -p $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
 
-cd $RPM_BUILD_DIR/docbook-dsssl-%{version}
+cd %{_builddir}/docbook-dsssl-%{version}
 
 install bin/collateindex.pl $DESTDIR%{_bindir}
 cp -r contrib catalog dtds VERSION olink common html frames lib print images $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
