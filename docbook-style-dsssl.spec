@@ -1,6 +1,6 @@
 %define name docbook-style-dsssl
 %define version 1.79
-%define release %mkrel 11
+%define release 13
 
 name:		%{name}
 version:	%{version}
@@ -37,11 +37,11 @@ They are highly customizable.
 %build
 
 %install
-DESTDIR=%{buildroot}
+DESTDIR=$RPM_BUILD_ROOT
 mkdir -p $DESTDIR%{_bindir}
 mkdir -p $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
 
-cd %{_builddir}/docbook-dsssl-%{version}
+cd $RPM_BUILD_DIR/docbook-dsssl-%{version}
 
 install bin/collateindex.pl $DESTDIR%{_bindir}
 cp -r contrib catalog dtds VERSION olink common html frames lib print images $DESTDIR%{sgmlbase}/docbook/dsssl-stylesheets-%{version}/
@@ -53,7 +53,7 @@ cd ..
 
 
 %clean
-DESTDIR=%{buildroot}
+DESTDIR=$RPM_BUILD_ROOT
 rm -rf $DESTDIR
 
 
@@ -112,4 +112,74 @@ if [ "$1" = "0" -a -x %{_bindir}/xmlcatalog ]; then
     
 fi
 
+
+
+
+%changelog
+* Tue May 03 2011 Oden Eriksson <oeriksson@mandriva.com> 1.79-11mdv2011.0
++ Revision: 663840
+- mass rebuild
+
+* Thu Dec 02 2010 Oden Eriksson <oeriksson@mandriva.com> 1.79-10mdv2011.0
++ Revision: 604807
+- rebuild
+
+* Tue Mar 16 2010 Oden Eriksson <oeriksson@mandriva.com> 1.79-9mdv2010.1
++ Revision: 520692
+- rebuilt for 2010.1
+
+* Sun Aug 09 2009 Oden Eriksson <oeriksson@mandriva.com> 1.79-8mdv2010.0
++ Revision: 413370
+- rebuild
+
+* Sat Mar 21 2009 Funda Wang <fwang@mandriva.org> 1.79-7mdv2009.1
++ Revision: 359903
+- fix patch num
+
+* Mon Jun 16 2008 Thierry Vignaud <tv@mandriva.org> 1.79-7mdv2009.0
++ Revision: 220675
+- rebuild
+
+* Sat Jan 12 2008 Thierry Vignaud <tv@mandriva.org> 1.79-6mdv2008.1
++ Revision: 149204
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Thu Aug 16 2007 Thierry Vignaud <tv@mandriva.org> 1.79-5mdv2008.0
++ Revision: 64211
+- rebuild
+
+* Sat Apr 28 2007 Adam Williamson <awilliamson@mandriva.org> 1.79-4mdv2008.0
++ Revision: 18847
+- clean spec; rebuild for new era
+
+
+* Tue Mar 21 2006 Camille Begnis <camille@mandriva.com> 1.79-3mdk
+- rebuild
+
+* Fri Feb 11 2005 Camille Begnis <camille@mandrakesoft.com> 1.79-2mdk
+- fix circular link [Bug 13511]
+- fix license and summary
+
+* Fri Nov 05 2004 Camille Begnis <camille@mandrakesoft.com> 1.79-1mdk
+- 1.79
+
+* Thu Apr 22 2004 Frederic Crozat <fcrozat@mandrakesoft.com> 1.78-6mdk
+- Don't output error when xmlcatalog is no longer present when uninstalling
+
+* Mon Jul 21 2003 Frederic Crozat <fcrozat@mandrakesoft.com> - 1.78-5mdk
+- Fix install when more than one dtd package is installed
+
+* Fri Jul 18 2003 Frederic Crozat <fcrozat@mandrakesoft.com> - 1.78-4mdk
+- Fix install when no sgml dtd package is installed
+
+* Tue May 13 2003 <camille@ke.mandrakesoft.com> 1.78-3mdk
+- Added a patch to remove unsupported DTDDECL entry in catalog
+- removed unneeded 'Requires: docbook-dtd-sgml'
+
+* Fri Apr 25 2003 Frederic Crozat <fcrozat@mandrakesoft.com> - 1.78-2mdk
+- Remove xml-docbook-*.cat wrongly created
 
