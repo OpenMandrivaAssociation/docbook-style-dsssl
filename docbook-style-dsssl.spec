@@ -21,7 +21,7 @@ They are highly customizable.
 %prep
 %setup -qn docbook-dsssl-%{version}
 %setup -T -D -n docbook-dsssl-%{version}
-%patch0 -p1
+%apply_patches
 
 %build
 
