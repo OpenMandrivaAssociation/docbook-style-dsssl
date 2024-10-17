@@ -6,7 +6,7 @@ version:	1.79
 release:	14
 Group:		Publishing
 License:	Artistic style
-Url:		http://sourceforge.net/projects/docbook/
+Url:		https://sourceforge.net/projects/docbook/
 Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.bz2
 Patch0:		docbook-dsssl-1.78-DTDDECL.patch
 BuildArch:	noarch
