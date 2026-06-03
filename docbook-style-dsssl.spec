@@ -3,7 +3,7 @@
 Summary:	Norman Walsh's modular stylesheets for DocBook
 name:		docbook-style-dsssl
 version:	1.79
-release:	14
+release:	15
 Group:		Publishing
 License:	Artistic style
 Url:		https://sourceforge.net/projects/docbook/
